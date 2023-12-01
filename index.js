@@ -1,4 +1,6 @@
-require("dotenv").config(!!process.env.CONFIG ? {path: process.env.CONFIG} : {});
+require("dotenv").config(
+  !!process.env.CONFIG ? { path: process.env.CONFIG } : {}
+);
 var express = require("express");
 var bodyParser = require("body-parser");
 var http = require("http");
@@ -7,11 +9,11 @@ var cors = require("cors");
 var app = express();
 
 // Environment variable: PORT where the node server is listening
-var SERVER_PORT = process.env.SERVER_PORT || 5000;
+var SERVER_PORT = 5001;
 // Environment variable: URL where our OpenVidu server is listening
-var OPENVIDU_URL = process.env.OPENVIDU_URL || 'http://localhost:4443';
+var OPENVIDU_URL = "https://openvidu.career-up.live";
 // Environment variable: secret shared with our OpenVidu server
-var OPENVIDU_SECRET = process.env.OPENVIDU_SECRET || 'MY_SECRET';
+var OPENVIDU_SECRET = "CAREER-UP";
 
 // Enable CORS support
 app.use(
@@ -29,12 +31,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Serve static resources if available
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + "/public"));
 
 // Serve application
 server.listen(SERVER_PORT, () => {
   console.log("Application started on port: ", SERVER_PORT);
-  console.warn('Application server connecting to OpenVidu at ' + OPENVIDU_URL);
+  console.warn("Application server connecting to OpenVidu at " + OPENVIDU_URL);
 });
 
 app.post("/api/sessions", async (req, res) => {
@@ -54,4 +56,4 @@ app.post("/api/sessions/:sessionId/connections", async (req, res) => {
   }
 });
 
-process.on('uncaughtException', err => console.error(err));
+process.on("uncaughtException", (err) => console.error(err));
