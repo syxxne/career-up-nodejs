@@ -11,7 +11,7 @@ var app = express();
 // Environment variable: PORT where the node server is listening
 var SERVER_PORT = 5001;
 // Environment variable: URL where our OpenVidu server is listening
-var OPENVIDU_URL = "https://openvidu.career-up.live";
+var OPENVIDU_URL = "https://openvidu.career-up.live:8443";
 // Environment variable: secret shared with our OpenVidu server
 var OPENVIDU_SECRET = "CAREER-UP";
 
